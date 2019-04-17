@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="influxdb,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="influxdbInfluxDB是一个开源的时序数据库，使用GO语言开发，特别适合用于处理和分析资源监控数据这种时序相关数据。  influxdb 文档： https://docs.influxdata.com/influxdb/v1.6/introduction/  名词及相关概念 官方关键概念解释： https://docs.influxdata.com/influxdb/v1.6/conce">
+<meta name="keywords" content="influxdb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="influxdb">
+<meta property="og:url" content="http://yoursite.com/2018/10/17/db-influxdb/index.html">
+<meta property="og:site_name" content="CHEN">
+<meta property="og:description" content="influxdbInfluxDB是一个开源的时序数据库，使用GO语言开发，特别适合用于处理和分析资源监控数据这种时序相关数据。  influxdb 文档： https://docs.influxdata.com/influxdb/v1.6/introduction/  名词及相关概念 官方关键概念解释： https://docs.influxdata.com/influxdb/v1.6/conce">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-17T13:54:06.748Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="influxdb">
+<meta name="twitter:description" content="influxdbInfluxDB是一个开源的时序数据库，使用GO语言开发，特别适合用于处理和分析资源监控数据这种时序相关数据。  influxdb 文档： https://docs.influxdata.com/influxdb/v1.6/introduction/  名词及相关概念 官方关键概念解释： https://docs.influxdata.com/influxdb/v1.6/conce">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/17/db-influxdb/">
+
+
+
+
+
+  <title>influxdb | CHEN</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CHEN</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/17/db-influxdb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Kunhui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHEN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">influxdb</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-17T18:57:15+08:00">
+                2018-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/db/" itemprop="url" rel="index">
+                    <span itemprop="name">db</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="influxdb"><a href="#influxdb" class="headerlink" title="influxdb"></a>influxdb</h1><p><a href="https://docs.influxdata.com/influxdb/v1.3/" target="_blank" rel="noopener">InfluxDB</a>是一个开源的时序数据库，使用GO语言开发，特别适合用于处理和分析资源监控数据这种时序相关数据。</p>
+<blockquote>
+<p>influxdb 文档： <a href="https://docs.influxdata.com/influxdb/v1.6/introduction/" target="_blank" rel="noopener">https://docs.influxdata.com/influxdb/v1.6/introduction/</a></p>
+</blockquote>
+<h2 id="名词及相关概念"><a href="#名词及相关概念" class="headerlink" title="名词及相关概念"></a>名词及相关概念</h2><blockquote>
+<p>官方关键概念解释： <a href="https://docs.influxdata.com/influxdb/v1.6/concepts/key_concepts/" target="_blank" rel="noopener">https://docs.influxdata.com/influxdb/v1.6/concepts/key_concepts/</a><br>官方术语解释：<a href="https://docs.influxdata.com/influxdb/v1.6/introduction/" target="_blank" rel="noopener">https://docs.influxdata.com/influxdb/v1.6/introduction/</a></p>
+</blockquote>
+<h3 id="database"><a href="#database" class="headerlink" title="database"></a>database</h3><p>表示数据库</p>
+<h3 id="measurement"><a href="#measurement" class="headerlink" title="measurement"></a>measurement</h3><p>influxdb 中没有表的概念，将表称为 measurement ，所以influxdb中没有创建表的语法，通常通过直接写入数据对应的 measurement 也就生成了</p>
+<h3 id="points"><a href="#points" class="headerlink" title="points"></a>points</h3><p>在 influxdb 中，将一行数据成为points</p>
+<h3 id="series"><a href="#series" class="headerlink" title="series"></a>series</h3><p>所有在数据库中的数据，都需要通过图表来展示，而这个series表示这个表里面的数据，可以在图表上画成几条线：通过tags排列组合算出来。具体可以通过SHOW SERIES FROM “表名” 进行查询。</p>
+<h3 id="数据构成"><a href="#数据构成" class="headerlink" title="数据构成"></a>数据构成</h3><p>points 由时间（time），数据（fields），标签（tags）组成</p>
+<ul>
+<li>time ： 每条数据记录时间，是数据库中的主索引（会自动生成）</li>
+<li>fields ： 各种记录的值（没有索引属性），比如 温度，湿度</li>
+<li>tags： 各种有索引的属性，比如 地区，海拔</li>
+</ul>
+<h3 id="保存策略"><a href="#保存策略" class="headerlink" title="保存策略"></a>保存策略</h3><p>用来规定数据在数据库中保存多久，每个库中都会有一个默认的保存策略，当插入数据没有制定保存策略时，就使用默认的保存策略，通常使用方式为<code>保存策略.表名</code>，<strong>指定了什么保存策略存储数据，取的时候也要通过指定对应的保存策略取数据</strong>，否则取不到数据</p>
+<h3 id="连续查询"><a href="#连续查询" class="headerlink" title="连续查询"></a>连续查询</h3><p>通常与保存策略一起使用以降低InfluxDB的系统占用量。它是在数据库中按你指定的时间间隔，每隔一段时间执行一次的一条sql语句，通常做法是从某张 measurement 中取想要的数据，插入到另外一张 measurement 中。</p>
+<h2 id="安装启动与卸载"><a href="#安装启动与卸载" class="headerlink" title="安装启动与卸载"></a>安装启动与卸载</h2><blockquote>
+<p>官方指导文档： <a href="https://docs.influxdata.com/influxdb/v1.3/introduction/installation/" target="_blank" rel="noopener">https://docs.influxdata.com/influxdb/v1.3/introduction/installation/</a></p>
+<p><em>以下记录 Ubuntu &amp; Debian 的源码安装过程，其他系统可参考官方文档</em></p>
+</blockquote>
+<h3 id="通过下载-tar-gz-的方式"><a href="#通过下载-tar-gz-的方式" class="headerlink" title="通过下载.tar.gz 的方式"></a>通过下载<code>.tar.gz</code> 的方式</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>只需要下载并解压<a href="https://portal.influxdata.com/downloads#influxdb" target="_blank" rel="noopener">源码包</a>即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.influxdata.com/influxdb/releases/influxdb-1.6.3_linux_amd64.tar.gz</span><br><span class="line">tar -xzvf influxdb-1.6.3_linux_amd64.tar.gz &amp;&amp; cd influxdb-1.6.3-1</span><br></pre></td></tr></table></figure></p>
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><p>启动脚本在解压目录的<code>usr/bin</code>文件夹下<code>influxd</code>为服务端，<code>influx</code>为客户端，需要将服务段启动起来后才能才作数据库。</p>
+<p><strong>tips:</strong> </p>
+<ul>
+<li><code>influx_inspect</code> 为 influxdb 的查看工具</li>
+<li><code>influx_stress</code> 为 influxdb 的压力测试工具</li>
+<li><code>influx_tsm</code> 为 influxdb 的数据库转换工具</li>
+<li>解压目录下的 <code>etc/influxdb/influxdb.conf</code>文件并没有被使用，可通过在解压目录下运行<code>./usr/bin/influxd config</code> 查看默认的配置信息</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在解压目录下运行启动服务进程</span></span><br><span class="line">./usr/bin/influxd</span><br><span class="line"><span class="comment"># 在解压目录下运行进入到influxdb</span></span><br><span class="line">./usr/bin/influx</span><br></pre></td></tr></table></figure>
+<h5 id="数据存储位置"><a href="#数据存储位置" class="headerlink" title="数据存储位置"></a>数据存储位置</h5><p>启动后，influxdb 会在用户的根目录（～/）下，生成 <code>.influxdb</code> 文件夹和 <code>.influx_history</code> 文件</p>
+<ul>
+<li><code>.influxdb</code> 主要用于存放数据，包括<code>data</code> <code>meta</code> <code>mal</code> 三个文件夹<ul>
+<li><code>data</code> : 存放最终存储的数据</li>
+<li><code>meta</code> : 存放数据库元数据</li>
+<li><code>mal</code> ： 存放预写日志文件</li>
+</ul>
+</li>
+<li><code>.influx_history</code> : 记录 influxdb 的操作记录</li>
+</ul>
+<h4 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h4><p>删除解压的文件夹以及<code>~/.influxdb</code> 和 <code>~/.influx_history</code> 文件</p>
+<h3 id="通过-deb-的方式"><a href="#通过-deb-的方式" class="headerlink" title="通过 .deb 的方式"></a>通过 .deb 的方式</h3><h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><p>下载并使用 <code>sudo dpkg -i</code> 命令安装即可<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载 deb 包</span></span><br><span class="line">wget https://dl.influxdata.com/influxdb/releases/influxdb_1.6.3_amd64.deb</span><br><span class="line"><span class="comment"># 安装</span></span><br><span class="line">sudo dpkg -i influxdb_1.6.3_amd64.deb</span><br></pre></td></tr></table></figure></p>
+<h4 id="启动-1"><a href="#启动-1" class="headerlink" title="启动"></a>启动</h4><p>安装好后，influxdb 会在 <code>/usr/bin</code>目录下安装好<code>influxd</code> <code>influx</code> <code>influx_inspect</code> <code>influx_stress</code> <code>influx_tsm</code>命令</p>
+<p>和上面一样通过运行对应的命令做对应的事情即可，不同的是这样的安装是系统级的安装，还可以通过下面的命名管理influxdb<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 后台启动influxdb</span></span><br><span class="line">sudo service influxdb start</span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">sudo service influxdb restart</span><br><span class="line"><span class="comment"># 查看 influxdb 运行状态</span></span><br><span class="line">sudo service influxdb status</span><br><span class="line"><span class="comment"># 停止 influxdb 进程</span></span><br><span class="line">sudo service influxdb stop</span><br><span class="line"><span class="comment"># 进入到influxdb</span></span><br><span class="line">influx</span><br></pre></td></tr></table></figure></p>
+<p><strong>tips:</strong> </p>
+<ul>
+<li>默认使用的配置文件为 <code>/etc/influxdb/influxdb.conf</code></li>
+<li>数据保存在 <code>/var/lib/influxdb</code> 下</li>
+<li><code>/etc/default/influxdb</code> 可用于配置启动时命令行参数</li>
+</ul>
+<h4 id="卸载-1"><a href="#卸载-1" class="headerlink" title="卸载"></a>卸载</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg --purge influxdb</span><br><span class="line">sudo rm -rf /var/lib/influxdb/</span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><blockquote>
+<p>下文的操作皆在 influxdb 客户端中进行,请运行<code>influx</code>命令进入客户端</p>
+</blockquote>
+<h3 id="数据库的增加删除"><a href="#数据库的增加删除" class="headerlink" title="数据库的增加删除"></a>数据库的增加删除</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建数据库</span></span><br><span class="line">CREATE DATABASE mydb</span><br><span class="line"><span class="comment"># 显示所有数据库</span></span><br><span class="line">SHOW DATABASE</span><br><span class="line"><span class="comment"># 使用数据库</span></span><br><span class="line">USE mydb</span><br><span class="line"><span class="comment"># 删除数据库</span></span><br><span class="line">DROP DATABASE mydb</span><br></pre></td></tr></table></figure>
+<h3 id="表、数据的增加删除"><a href="#表、数据的增加删除" class="headerlink" title="表、数据的增加删除"></a>表、数据的增加删除</h3><blockquote>
+<p>在做以下操作前请先使用 <code>USE</code> 命令使用某个数据库</p>
+</blockquote>
+<p>influxdb 中没有特定创建表的语法，通过插入一条数据即可生成对应的表和数据，通过使用 Line Protocol 格式书写插入数据的格式。</p>
+<blockquote>
+<p>Line Protocal 资料: <a href="https://docs.influxdata.com/influxdb/v1.6/write_protocols/line_protocol_reference/#syntax" target="_blank" rel="noopener">https://docs.influxdata.com/influxdb/v1.6/write_protocols/line_protocol_reference/#syntax</a></p>
+</blockquote>
+<p>创建数据的语法通常为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT &lt;measurement&gt;[,&lt;tag-key&gt;=&lt;tag-value&gt;...] &lt;field-key&gt;=&lt;field-value&gt;[,&lt;field2-key&gt;=&lt;field2-value&gt;...] [unix-nano-timestamp]</span><br></pre></td></tr></table></figure></p>
+<p>第一值为表明接着逗号，逗号之后是<strong>tag</strong>由多个以逗号隔开<code>key=value</code>形式组成(<em>这里的key和value都必须为string</em>)，接着是一个空格，空格之后是<strong>field</strong>也是由多个<code>key=value</code>形式组成（<em>这里的key必须为string，value可以是string，floats，int或booleans</em>），接着又是一个空格，空格后为时间用于替换调自动生成的时间戳，不指定则自动生成</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一张名为 cpu的表 , 包含 host 和 region 两个 tag，和一个value的field</span></span><br><span class="line">INSERT cpu,host=serverA,region=us_west value=0.64</span><br><span class="line"><span class="comment"># 插入数据并指定数据记录时间</span></span><br><span class="line">INSERT cpu,host=serverB,region=us_west value=0.99 1539788361141849675</span><br><span class="line"><span class="comment"># 显示所有 表</span></span><br><span class="line">SHOW MEASUREMENTS</span><br><span class="line"><span class="comment"># 删除一张表</span></span><br><span class="line">DROP MEASUREMENTS cpu</span><br></pre></td></tr></table></figure>
+<p><strong>数据查询语法与mysql一样</strong></p>
+<blockquote>
+<p>查询语法指导：<a href="https://docs.influxdata.com/influxdb/v1.6/concepts/crosswalk/" target="_blank" rel="noopener">https://docs.influxdata.com/influxdb/v1.6/concepts/crosswalk/</a></p>
+</blockquote>
+<h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示所有用户</span></span><br><span class="line">SHOW USERS</span><br><span class="line"><span class="comment"># 创建用户</span></span><br><span class="line">CREATE USER <span class="string">"username"</span> WITH PASSWORD <span class="string">'password'</span></span><br><span class="line"><span class="comment"># 创建管理员用户</span></span><br><span class="line">CREATE USER <span class="string">"username"</span> WITH PASSWORD <span class="string">'password'</span> WITH ALL PRIVILEGES</span><br><span class="line"><span class="comment"># 删除用户</span></span><br><span class="line">drop user <span class="string">'username'</span></span><br></pre></td></tr></table></figure>
+<p>influxdb 的用户权限分为<code>READ</code>,<code>WRITE</code>,<code>ALL PRIVILEGES</code>三种权限，可通过<code>CREATE USER &quot;username&quot; WITH PASSWORD &#39;password&#39; WITH ALL PRIVILEGES</code>的方式在创建用户时，指定权限，</p>
+<p>默认influxdb并没有开启认证，通过修改配置文件开启权限验证。将<code>auth-enabled = true</code>,然后通过<code>influx  -host ‘localhost‘ -port ‘8086‘ -username &#39;username&#39; -password &#39;password&#39;</code> 的方式登陆</p>
+<h3 id="保存策略的使用"><a href="#保存策略的使用" class="headerlink" title="保存策略的使用"></a>保存策略的使用</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看现有的保存策略</span></span><br><span class="line">SHOW RETENTION POLICIES ON mydb</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建保存策略</span></span><br><span class="line">CREATE RETENTION POLICY <span class="string">"2_hours"</span> ON <span class="string">"mydb"</span> DURATION 2h REPLICATION 1</span><br><span class="line"><span class="comment"># 创建一个保存策略并设为默认</span></span><br><span class="line">CREATE RETENTION POLICY <span class="string">"3_hours"</span> ON <span class="string">"mydb"</span> DURATION 3h REPLICATION 1 DEFAULT</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改保存策略为默认保存策略</span></span><br><span class="line">ALTER RETENTION POLICY <span class="string">"2_hours"</span> on <span class="string">"mydb"</span> DEFAULT</span><br><span class="line"><span class="comment"># 修改保存策略的时间</span></span><br><span class="line">ALTER RETENTION POLICY <span class="string">"2_hours"</span> on <span class="string">"mydb"</span> DURATION 4h</span><br><span class="line"><span class="comment"># 修改保存策略的时间并设为默认</span></span><br><span class="line">ALTER RETENTION POLICY <span class="string">"2_hours"</span> on <span class="string">"mydb"</span> DURATION 2h DEFAULT</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除保存策略</span></span><br><span class="line">DROP RETENTION POLICY <span class="string">"2_hours"</span> ON <span class="string">"mydb"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询时使用保存策略</span></span><br><span class="line">SELECT * FROM <span class="string">"2_hours"</span>.cpu</span><br></pre></td></tr></table></figure>
+<h3 id="连续查询的使用"><a href="#连续查询的使用" class="headerlink" title="连续查询的使用"></a>连续查询的使用</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW CONTINUOUS QUERIES</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE CONTINUOUS QUERY &lt;cq_name&gt; ON &lt;database_name&gt;</span><br><span class="line">[RESAMPLE [EVERY &lt;interval&gt;] [FOR &lt;interval&gt;]]</span><br><span class="line">BEGIN SELECT &lt;<span class="keyword">function</span>&gt;(&lt;stuff&gt;)[,&lt;<span class="keyword">function</span>&gt;(&lt;stuff&gt;)] INTO &lt;different_measurement&gt;</span><br><span class="line">FROM &lt;current_measurement&gt; [WHERE &lt;stuff&gt;] GROUP BY time(&lt;interval&gt;)[,&lt;stuff&gt;]</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+<p>查询部分被 CREATE CONTINUOUS QUERY […] BEGIN 和 END 所包含，主要的逻辑代码也是在这一部分。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE CONTINUOUS QUERY sidekiq_gc_counts ON $DATABASE</span><br><span class="line">BEGIN</span><br><span class="line">    SELECT sum(count) AS total,</span><br><span class="line">        sum(minor_gc_count) AS minor,</span><br><span class="line">        sum(major_gc_count) AS major</span><br><span class="line">    INTO downsampled.sidekiq_gc_counts</span><br><span class="line">    FROM &quot;$DEFAULT_RETENTION_POLICY&quot;.sidekiq_gc_statistics</span><br><span class="line">    GROUP BY time(1m)</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP CONTINUOUS QUERY &lt;cq_name&gt; ON &lt;database_name&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/influxdb/" rel="tag"># influxdb</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/11/linux-output-colour-word/" rel="next" title="linux 中输出带有颜色字体">
+                <i class="fa fa-chevron-left"></i> linux 中输出带有颜色字体
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/13/db-mysql-sql-note-md/" rel="prev" title="sql 之 case when 用法">
+                sql 之 case when 用法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Chen Kunhui</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#influxdb"><span class="nav-number">1.</span> <span class="nav-text">influxdb</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#名词及相关概念"><span class="nav-number">1.1.</span> <span class="nav-text">名词及相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#database"><span class="nav-number">1.1.1.</span> <span class="nav-text">database</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#measurement"><span class="nav-number">1.1.2.</span> <span class="nav-text">measurement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#points"><span class="nav-number">1.1.3.</span> <span class="nav-text">points</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#series"><span class="nav-number">1.1.4.</span> <span class="nav-text">series</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据构成"><span class="nav-number">1.1.5.</span> <span class="nav-text">数据构成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保存策略"><span class="nav-number">1.1.6.</span> <span class="nav-text">保存策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连续查询"><span class="nav-number">1.1.7.</span> <span class="nav-text">连续查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装启动与卸载"><span class="nav-number">1.2.</span> <span class="nav-text">安装启动与卸载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过下载-tar-gz-的方式"><span class="nav-number">1.2.1.</span> <span class="nav-text">通过下载.tar.gz 的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">启动</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据存储位置"><span class="nav-number">1.2.1.2.1.</span> <span class="nav-text">数据存储位置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卸载"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">卸载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-deb-的方式"><span class="nav-number">1.2.2.</span> <span class="nav-text">通过 .deb 的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-1"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动-1"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卸载-1"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">卸载</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">1.3.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库的增加删除"><span class="nav-number">1.3.1.</span> <span class="nav-text">数据库的增加删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表、数据的增加删除"><span class="nav-number">1.3.2.</span> <span class="nav-text">表、数据的增加删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户管理"><span class="nav-number">1.3.3.</span> <span class="nav-text">用户管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保存策略的使用"><span class="nav-number">1.3.4.</span> <span class="nav-text">保存策略的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连续查询的使用"><span class="nav-number">1.3.5.</span> <span class="nav-text">连续查询的使用</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Kunhui</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src>
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
