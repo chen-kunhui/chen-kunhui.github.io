@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>E.W.Dijkstra 双栈算术求值</title>
+      <link href="/2019/04/25/arithmetic-double-Dijkstra/"/>
+      <url>/2019/04/25/arithmetic-double-Dijkstra/</url>
+      
+        <content type="html"><![CDATA[<p>双栈算术是 E.W.Dijkstra 在 20 世纪 60 年代发明的一个非常简单的算法，通过使用两个栈。<br>一个保存运算操作符，一个保存值的方式，来实现算术运算。思路如下:</p><p>一个算术表达式通常由括号，运算符和数字组成，将表达式从左到右逐一按以下步骤处理:</p><ol><li>如遇到 <code>(</code> 忽略</li><li>遇到数字则压入专门保存数字的栈</li><li>遇到操作符则压入专门保存运算符的栈</li><li>遇到 <code>)</code>, 从保存数字的栈中弹出两个数，然后从保存运算符的栈中弹出一个运算符，运算后将结果压入保存数字的栈</li></ol><hr><p><strong> 以 <code>(1 +（( 2 + 3 ）x （ 4 x 5 )))</code> 为例,如下图 </strong></p><p><img src="/images/E_W_Dijkstra.jpg" alt="E.W.Dijkstra 双栈算术轨迹图"></p><hr><blockquote><p>详情见 算法（第四版）81 页</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>linux 命令之 sed</title>
       <link href="/2019/04/18/linux-cmd-sed/"/>
       <url>/2019/04/18/linux-cmd-sed/</url>
