@@ -77,13 +77,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="CHEN">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta name="description" content="在一个 shell 脚本中，通过用 &amp;amp; 的方式将一条命令或一个方法放到后台执行，相当于又起来一个子进程在其启动子进程的后面紧接用变量 $! 可以获得该子任务进程的 pid脚本中可以通过 wait 方式，等待该进程执行完才推出，从而在shell脚步中实现并发 wait 不加参数 相当于等待所有子进程结束，wait + 子进程 pid 相当于等待某个子进程结束 注意，shell 脚步退出了，他">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell 模拟并发">
+<meta property="og:url" content="http://yoursite.com/2019/04/27/linux_asyn_shell/index.html">
 <meta property="og:site_name" content="CHEN">
+<meta property="og:description" content="在一个 shell 脚本中，通过用 &amp;amp; 的方式将一条命令或一个方法放到后台执行，相当于又起来一个子进程在其启动子进程的后面紧接用变量 $! 可以获得该子任务进程的 pid脚本中可以通过 wait 方式，等待该进程执行完才推出，从而在shell脚步中实现并发 wait 不加参数 相当于等待所有子进程结束，wait + 子进程 pid 相当于等待某个子进程结束 注意，shell 脚步退出了，他">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-27T10:00:00.750Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CHEN">
+<meta name="twitter:title" content="shell 模拟并发">
+<meta name="twitter:description" content="在一个 shell 脚本中，通过用 &amp;amp; 的方式将一条命令或一个方法放到后台执行，相当于又起来一个子进程在其启动子进程的后面紧接用变量 $! 可以获得该子任务进程的 pid脚本中可以通过 wait 方式，等待该进程执行完才推出，从而在shell脚步中实现并发 wait 不加参数 相当于等待所有子进程结束，wait + 子进程 pid 相当于等待某个子进程结束 注意，shell 脚步退出了，他">
 
 
 
@@ -113,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/page/3/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/27/linux_asyn_shell/">
 
 
 
 
 
-  <title>归档 | CHEN</title>
+  <title>shell 模拟并发 | CHEN</title>
   
 
 
@@ -138,7 +142,7 @@
     
   
 
-  <div class="container sidebar-position-right page-archive">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -264,181 +268,194 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/27/linux_asyn_shell/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Kunhui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHEN">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">shell 模拟并发</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-27T14:01:49+08:00">
+                2019-04-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-27T18:00:00+08:00">
+                2019-04-27
+              </time>
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 24 篇日志。 继续努力。
-      </span>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
 
-      
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/shell/" itemprop="url" rel="index">
+                    <span itemprop="name">shell</span>
+                  </a>
+                </span>
 
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/05/ruby-rails-devise/" itemprop="url">
-              
-                <span itemprop="name">ruby Devise 登陆验证框架</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-08-05T13:54:34+08:00" content="2018-08-05">
-          08-05
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/07/21/mac-install-chrome/" itemprop="url">
-              
-                <span itemprop="name">mac 安装 chrome</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-07-21T11:34:22+08:00" content="2018-07-21">
-          07-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/07/18/db-elasticsearch/" itemprop="url">
-              
-                <span itemprop="name">elasticsearch 安装与启动</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-07-18T22:55:27+08:00" content="2018-07-18">
-          07-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>在一个 shell 脚本中，通过用 &amp; 的方式将一条命令或一个方法放到后台执行，相当于又起来一个子进程<br>在其启动子进程的后面紧接用变量 $! 可以获得该子任务进程的 pid<br>脚本中可以通过 wait 方式，等待该进程执行完才推出，从而在shell脚步中实现并发</p>
+<p>wait 不加参数 相当于等待所有子进程结束，wait + 子进程 pid 相当于等待某个子进程结束</p>
+<p>注意，shell 脚步退出了，他的子进程并不会跟着推出，因为他们之间是独立的进程<br>同样在子任务中调用 exit 退出子任务，并不会影响 shell 脚步继续执行</p>
+<p>PID是程序被操作系统加载到内存成为进程后动态分配的资源。<br>PPID（parent process ID）：PPID是程序的父进程号。</p>
+<p>父进程退出并不会通知子进程推出，子进程会被pid 为1 的init进程领养</p>
+<p>过多的子进程是会拖慢运行速度的</p>
+<p>shell 模拟并发脚本:</p>
+<blockquote>
+<p>note: 在脚本中如果强制父进程退出了，子进程如果还在运行并不会退出</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"></span><br><span class="line">start_time=$(date +%s)</span><br><span class="line">root_path=$(<span class="built_in">pwd</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 子进程的退出状态码统一保存的文件</span></span><br><span class="line">RESULT_FILE=<span class="string">"<span class="variable">$&#123;root_path&#125;</span>/<span class="variable">$&#123;0&#125;</span>.result.log"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 避免有残留数据</span></span><br><span class="line">rm -rf <span class="variable">$RESULT_FILE</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动一个子进程运行命令，实现并发</span></span><br><span class="line"><span class="function"><span class="title">run_in_asyn</span></span>()&#123;</span><br><span class="line">  run_cmd <span class="variable">$@</span> &amp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将命令的执行结果保存到一个文件中</span></span><br><span class="line"><span class="function"><span class="title">run_cmd</span></span>()&#123;</span><br><span class="line">  <span class="built_in">local</span> cmd=<span class="variable">$@</span></span><br><span class="line">  <span class="built_in">eval</span> <span class="variable">$cmd</span></span><br><span class="line">  <span class="built_in">echo</span> $? &gt;&gt; <span class="variable">$RESULT_FILE</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断子进程是否有执行失败的</span></span><br><span class="line"><span class="function"><span class="title">is_success</span></span>()&#123;</span><br><span class="line">  <span class="built_in">local</span> result_file=<span class="variable">$1</span></span><br><span class="line">  <span class="keyword">while</span> <span class="built_in">read</span> line; <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">if</span> [[ <span class="variable">$line</span> -ne 0 ]]; <span class="keyword">then</span></span><br><span class="line">      <span class="built_in">return</span> <span class="variable">$line</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">done</span> &lt; <span class="variable">$result_file</span></span><br><span class="line">  <span class="built_in">return</span> 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例</span></span><br><span class="line"><span class="function"><span class="title">test</span></span>()&#123;</span><br><span class="line">  <span class="keyword">for</span>((i=0;i&lt;5;i++));<span class="keyword">do</span></span><br><span class="line">    sleep 1</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$1</span></span><br><span class="line">  <span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">run_in_asyn <span class="string">"test t1"</span></span><br><span class="line">run_in_asyn <span class="string">"test t2"</span></span><br><span class="line">run_in_asyn <span class="string">"rr"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例 end</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">wait</span></span><br><span class="line"></span><br><span class="line">is_success <span class="variable">$RESULT_FILE</span></span><br><span class="line"><span class="comment"># 通过 $? 获取上一个命令的返回结果，即 is_success 的返回值</span></span><br><span class="line">exit_code=$?</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清理临时创建的文件</span></span><br><span class="line">rm -rf <span class="variable">$RESULT_FILE</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出脚本的耗时</span></span><br><span class="line">end_time=$(date +%s)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"run <span class="variable">$0</span> duration: <span class="variable">$((end_time - start_time)</span>)s"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> <span class="variable">$exit_code</span></span><br></pre></td></tr></table></figure>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/07/17/github-pages/" itemprop="url">
-              
-                <span itemprop="name">GitHub Pages 搭建个人博客</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-07-17T21:38:45+08:00" content="2018-07-17">
-          07-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/25/arithmetic-double-Dijkstra/" rel="next" title="E.W.Dijkstra 双栈算术求值">
+                <i class="fa fa-chevron-left"></i> E.W.Dijkstra 双栈算术求值
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/27/linux-shell-note/" rel="prev" title="shell 脚本简记">
+                shell 脚本简记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -446,6 +463,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -669,6 +690,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1043,26 +1068,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
