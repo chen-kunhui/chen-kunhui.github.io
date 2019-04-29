@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="psql,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -77,18 +77,17 @@
 
 
 
-<meta name="description" content="参考 https://www.cnblogs.com/z-sm/archive/2016/07/05/5644165.htmlpostgressql 官网  简介mac 下安装与启动 安装1brew install postgresql -v   运行完以上命令后 posgresql就被安装到了 /usr/local/Cellar/postgresql下了,并建立了一个链接目录/usr/loca">
-<meta name="keywords" content="psql">
+<meta name="description" content="生成 ssh key ssh-keygen -t rsa -b 4096 -C &amp;quot;your_email@example.com&amp;quot; 将 ssh key 添加到目标主机，从而实现免密登陆 ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.22  该操作相对于将 ssh 公钥复制粘贴到 192.168.0.22 机器 root 用户 ~/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="postgresql">
-<meta property="og:url" content="http://yoursite.com/2018/08/11/db-postgresql/index.html">
+<meta property="og:title" content="ssh 笔记">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/linux-ssh-note/index.html">
 <meta property="og:site_name" content="CHEN">
-<meta property="og:description" content="参考 https://www.cnblogs.com/z-sm/archive/2016/07/05/5644165.htmlpostgressql 官网  简介mac 下安装与启动 安装1brew install postgresql -v   运行完以上命令后 posgresql就被安装到了 /usr/local/Cellar/postgresql下了,并建立了一个链接目录/usr/loca">
+<meta property="og:description" content="生成 ssh key ssh-keygen -t rsa -b 4096 -C &amp;quot;your_email@example.com&amp;quot; 将 ssh key 添加到目标主机，从而实现免密登陆 ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.22  该操作相对于将 ssh 公钥复制粘贴到 192.168.0.22 机器 root 用户 ~/">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-17T13:54:27.122Z">
+<meta property="og:updated_time" content="2019-04-29T15:37:43.691Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="postgresql">
-<meta name="twitter:description" content="参考 https://www.cnblogs.com/z-sm/archive/2016/07/05/5644165.htmlpostgressql 官网  简介mac 下安装与启动 安装1brew install postgresql -v   运行完以上命令后 posgresql就被安装到了 /usr/local/Cellar/postgresql下了,并建立了一个链接目录/usr/loca">
+<meta name="twitter:title" content="ssh 笔记">
+<meta name="twitter:description" content="生成 ssh key ssh-keygen -t rsa -b 4096 -C &amp;quot;your_email@example.com&amp;quot; 将 ssh key 添加到目标主机，从而实现免密登陆 ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.22  该操作相对于将 ssh 公钥复制粘贴到 192.168.0.22 机器 root 用户 ~/">
 
 
 
@@ -118,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/11/db-postgresql/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/29/linux-ssh-note/">
 
 
 
 
 
-  <title>postgresql | CHEN</title>
+  <title>ssh 笔记 | CHEN</title>
   
 
 
@@ -283,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/11/db-postgresql/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/29/linux-ssh-note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Kunhui">
@@ -300,7 +299,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">postgresql</h1>
+          <h1 class="post-title" itemprop="name headline">ssh 笔记</h1>
         
 
         <div class="post-meta">
@@ -310,8 +309,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-11T15:11:27+08:00">
-                2018-08-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-29T21:53:54+08:00">
+                2019-04-29
               </time>
             
 
@@ -324,8 +323,8 @@
                 <i class="fa fa-calendar-check-o"></i>
               </span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-17T21:54:27+08:00">
-                2019-04-17
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-29T23:37:43+08:00">
+                2019-04-29
               </time>
             
           </span>
@@ -341,8 +340,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/db/" itemprop="url" rel="index">
-                    <span itemprop="name">db</span>
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/cmd/" itemprop="url" rel="index">
+                    <span itemprop="name">cmd</span>
                   </a>
                 </span>
 
@@ -378,96 +388,26 @@
       
 
       
-        <blockquote>
-<p>参考 <a href="https://www.cnblogs.com/z-sm/archive/2016/07/05/5644165.html" target="_blank" rel="noopener">https://www.cnblogs.com/z-sm/archive/2016/07/05/5644165.html</a><br><a href="https://www.postgresql.org/docs/current/static/app-initdb.html" target="_blank" rel="noopener">postgressql 官网</a></p>
+        <p>生成 ssh key</p>
+<pre><code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;
+</code></pre><p>将 ssh key 添加到目标主机，从而实现免密登陆</p>
+<pre><code>ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.22
+</code></pre><blockquote>
+<p>该操作相对于将 ssh 公钥复制粘贴到 192.168.0.22 机器 root 用户 ~/.ssh/authorized_keys 文件中</p>
 </blockquote>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h1 id="mac-下安装与启动"><a href="#mac-下安装与启动" class="headerlink" title="mac 下安装与启动"></a>mac 下安装与启动</h1><ol>
-<li>安装<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install postgresql -v</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>运行完以上命令后 posgresql就被安装到了 <code>/usr/local/Cellar/postgresql</code>下了,并建立了一个链接目录<code>/usr/local/opt/postgresql</code></p>
-<ul>
-<li>默认的数据库路径为<code>/usr/local/val/postgres</code></li>
-<li>默认创建一个当前用户名同名的不带密码的数据库管理员账号</li>
-<li>默认创建一个与当前用户名同名的数据库</li>
-</ul>
-<ol>
-<li><p>启动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew services start postgres</span><br><span class="line"> 或者</span><br><span class="line">pg_ctl -D /usr/local/var/postgres start</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>停止</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew services stop postgres</span><br><span class="line"> 或者</span><br><span class="line">pg_ctl -D /usr/local/var/postgres stop</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进去客户端</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 默认使用当前用户名，和当前用户名同名的数据库</span><br><span class="line">psql</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h1 id="ubuntu-下安装与启动"><a href="#ubuntu-下安装与启动" class="headerlink" title="ubuntu 下安装与启动"></a>ubuntu 下安装与启动</h1><ol>
-<li>安装<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install postgresql</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>安装成功后</p>
-<ul>
-<li>默认创建名为 postgres 的 linux 用户</li>
-<li>默认创建名为 postgres 不带密码的默认数据库管理员账号</li>
-<li>创建名为 postgres 的表</li>
-<li>配置目录为<code>/etc/postgresql/9.5/main</code></li>
-<li>默认数据库路径 <code>/var/lib/postgresql/9.5/main</code></li>
-<li>默认 socket 为 <code>/var/run/postgresql</code></li>
-<li>默认启动端口 5432</li>
-</ul>
-<ol>
-<li><p>启动与停止</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service postgresql start</span><br><span class="line">sudo service postgresql stop</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入客户端</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 以postgres用户身份运行psql命令</span><br><span class="line">sudo -u postgres psql</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h1 id="添加新用户和新数据库"><a href="#添加新用户和新数据库" class="headerlink" title="添加新用户和新数据库"></a>添加新用户和新数据库</h1><h2 id="通过-psql-客户端添加"><a href="#通过-psql-客户端添加" class="headerlink" title="通过 psql 客户端添加"></a>通过 psql 客户端添加</h2><p>进入客户端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u postgres psql</span><br></pre></td></tr></table></figure></p>
-<p>创建用户 <strong>exampleuser</strong> 并设置密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create user exampleuser whith password &apos;123456&apos;;</span><br></pre></td></tr></table></figure></p>
-<p>创建数据库 <strong>exampledb</strong> ，所有者为 exampleuser<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database exampledb owner exampleuser;</span><br></pre></td></tr></table></figure></p>
-<p>将exampledb数据库所有权赋予exampleuser，否则exampleuser只能登陆不能操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on database exampledb to exampleuser;</span><br></pre></td></tr></table></figure></p>
-<h2 id="通过shell命令行添加"><a href="#通过shell命令行添加" class="headerlink" title="通过shell命令行添加"></a>通过shell命令行添加</h2><p>postgreql 安装后，提供 <code>createuser</code> 和 <code>createdb</code> 命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 以postgres用户身份运行createuser命令创建exampleuser，并指定为超级用户</span><br><span class="line">sudo -u postgres createuser --superuser exampleuser</span><br><span class="line"># 以postgres用户身份运行createdb命令创建exampledb数据库，并指定为所有者为exampleuser</span><br><span class="line">sudo -u postgres createdb -O exampleuser exampledb</span><br></pre></td></tr></table></figure></p>
-<h1 id="psql"><a href="#psql" class="headerlink" title="psql"></a>psql</h1><p>安装完后会有PostgreSQL的客户端psql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psql -U dbuser -d exampledb -h 127.0.0.1 -p 5432</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>dbuser 数据库账号</li>
-<li>exampledb 数据库的名称</li>
-<li>127.0.0.1 数据库的主机ip</li>
-<li>5432 数据库的端口号</li>
-</ul>
-<blockquote>
-<p>如果仅输入<code>psql</code>,相当于以当前用户名作为登陆账号，指定的数据库为与当前用户名同名的数据库，若不存在这两项则报错。</p>
-</blockquote>
-<h1 id="客户端操作命令"><a href="#客户端操作命令" class="headerlink" title="客户端操作命令"></a>客户端操作命令</h1><p>数据库的增删改查与SQL语法一致，以下是一些特定的语法</p>
-<pre><code># 设置密码
-\password
-# 退出客户端
-\q
-# 查看SQL命令解释，如 \h select
-\h &lt;command&gt;
-# 查看psql命令列表
-\?
-# 列出所有数据库，相当与show databases
-\l
-# 链接到其他数据库，相当于 use dbname
-\c &lt;dbname&gt;
-# 列出当前数据库的所有表, 相当于 show tables;
-\d
-# 列出某个表的结构，相当于 desc &lt;table name&gt;
-\d &lt;table name&gt;
-# 列出当前所有用户
-\du
-# 打开文本编辑器
-\e
-# 列出当前数据库和链接信息
-\conninfo
-</code></pre><h1 id="initdb"><a href="#initdb" class="headerlink" title="initdb"></a>initdb</h1><p>postgresql 安装后提供 <code>initdb</code> 命令，可用于初始化一个数据库，而不使用默认的数据库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">initdb --locale=C -E utf-8 &lt;postgres_data_dir&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>postgres_data_dir</strong>: 数据的保存路径，使用绝对路径</p>
-<p>执行完以上命令后，在指定目录下就初始化了一个postgresql数据库，里面包括了配置文件等，与系统默认的postgresql独立开来。</p>
-<p>待更新 。。。</p>
-
+<p>远程执行 shell 命令</p>
+<pre><code>ssh  root@192.168.0.22 &quot;echo hello&quot;
+</code></pre><p>登陆远程主机</p>
+<pre><code>ssh root@192.168.0.22
+</code></pre><p>关闭ssh连接时提示的yes和no</p>
+<pre><code>ssh -o StrictHostKeyChecking=no 58.221.186.137
+</code></pre><p>或者</p>
+<pre><code>cat &gt; ~/.ssh/config &lt;&lt; end
+UserKnownHostsFile /dev/null
+ConnectTimeout 15
+StrictHostKeyChecking no
+end
+</code></pre>
       
     </div>
     
@@ -482,12 +422,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/psql/" rel="tag"># psql</a>
-          
-        </div>
-      
 
       
       
@@ -497,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/11/linux-cmd-ifconfig/" rel="next" title="ifconfig">
-                <i class="fa fa-chevron-left"></i> ifconfig
+              <a href="/2019/04/27/linux-shell-note/" rel="next" title="shell 脚本简记">
+                <i class="fa fa-chevron-left"></i> shell 脚本简记
               </a>
             
           </div>
@@ -507,8 +441,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/18/ruby-rails-5-2-master-key/" rel="prev" title="rails.5.2 之 master.key 文件">
-                rails.5.2 之 master.key 文件 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/29/linux-scp-note/" rel="prev" title="scp, sftp 传输文件">
+                scp, sftp 传输文件 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -561,17 +495,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -631,22 +556,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mac-下安装与启动"><span class="nav-number">2.</span> <span class="nav-text">mac 下安装与启动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ubuntu-下安装与启动"><span class="nav-number">3.</span> <span class="nav-text">ubuntu 下安装与启动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加新用户和新数据库"><span class="nav-number">4.</span> <span class="nav-text">添加新用户和新数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通过-psql-客户端添加"><span class="nav-number">4.1.</span> <span class="nav-text">通过 psql 客户端添加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过shell命令行添加"><span class="nav-number">4.2.</span> <span class="nav-text">通过shell命令行添加</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#psql"><span class="nav-number">5.</span> <span class="nav-text">psql</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#客户端操作命令"><span class="nav-number">6.</span> <span class="nav-text">客户端操作命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#initdb"><span class="nav-number">7.</span> <span class="nav-text">initdb</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

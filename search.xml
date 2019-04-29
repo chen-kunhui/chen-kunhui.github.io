@@ -4,6 +4,48 @@
   
     
     <entry>
+      <title>scp, sftp 传输文件</title>
+      <link href="/2019/04/29/linux-scp-note/"/>
+      <url>/2019/04/29/linux-scp-note/</url>
+      
+        <content type="html"><![CDATA[<h1 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h1><p>下载文件到本地</p><pre><code># 拷贝 10.183.234.111 主机的 /home/username/test.log 文件到本地的当前目录下scp username@10.183.234.111/home/username/test.log ./# 拷贝 10.183.234.111主机的 /home/username/dir 目录及内容到本地的当前目录下scp -r username@10.183.234.111/home/username/dir ./</code></pre><p>上传文件到远程机器</p><pre><code># 将本地当前目录下的 test.rb 文件上传到 10.183.234.111 主机的 /home/username 目录下scp test.rb username@10.183.234.111/home/username# 将本地当前目录下的 test_dir 目录及内容上传到 10.183.234.111 主机的 /home/username 目录下scp -r test_dir username@10.183.234.111/home/username</code></pre><h1 id="sftp"><a href="#sftp" class="headerlink" title="sftp"></a>sftp</h1><blockquote><p>引用 <a href="https://www.cnblogs.com/Xbingbing/p/8504818.html" target="_blank" rel="noopener">https://www.cnblogs.com/Xbingbing/p/8504818.html</a></p></blockquote><p>sftp 是一个交互式文件传输程式。它类似于 ftp, 但它进行加密传输，比FTP有更高的安全性。</p><h2 id="常用登陆方式："><a href="#常用登陆方式：" class="headerlink" title="常用登陆方式："></a>常用登陆方式：</h2><p>格式：sftp user@host</p><p>通过 sftp 连接 host，端口为默认的 22，指定用户 user。</p><h2 id="查看sftp支持的命令"><a href="#查看sftp支持的命令" class="headerlink" title="查看sftp支持的命令"></a>查看sftp支持的命令</h2><p>使用help命令，查看支持的命令，如：</p><pre><code>help</code></pre><p>(其中命令前面有“l”表示本地执行，其他表示在所登录的远程主机上面执行)</p><h2 id="基本的使用"><a href="#基本的使用" class="headerlink" title="基本的使用"></a>基本的使用</h2><p>sftp主要是用来传输文件的，包括上传文件(从本机到远程主机) ，下载文件(从远程主机到本机)。</p><h3 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h3><pre><code>get [-Ppr] remote [local]# 将远程当前目录下的文件test.cpp下载到本地当前目录的Project文件夹中。get test.cpp Project/# 将远程目录 abc 下载到本地当前目录的Project文件夹中。get -r abc Project/ 或者 get -R abc Project/</code></pre><h3 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h3><pre><code>put [-Ppr] local [remote]#将本地/home/Xbingbing/Software/目录下的ios文件传送到远程登陆主机的/home/Xbingbing/Blog/目录下。put /home/Xbingbing/Software/RHEL_5.5x86_64.iso /home/Xbing bing/Blog/# 将本地目录 abc下的内容推送到远程的 Project 目录下put -r abc Project/ 或者 put -R abc Project/</code></pre><h3 id="命令列表"><a href="#命令列表" class="headerlink" title="命令列表"></a>命令列表</h3><p>退出命令：</p><pre><code>bye                                Quit sftpexit                               Quit sftpquit                               Quit sftp</code></pre><p>其他命令：</p><pre><code>progress                           Toggle display of progress meterversion                            Show SFTP version!command                           Execute &#39;command&#39; in local shell!                                  Escape to local shell?                                  Synonym for helphelp                               Display this help text</code></pre><p>上传下载：</p><pre><code>put [-afPpRr] local [remote]       Upload fileget [-afPpRr] remote [local]       Download filereget [-fPpRr] remote [local]      Resume download filereput [-fPpRr] [local] remote      Resume upload file</code></pre><p>对远程主机操作：</p><pre><code>cd path                            Change remote directory to &#39;path&#39;chgrp grp path                     Change group of file &#39;path&#39; to &#39;grp&#39;chmod mode path                    Change permissions of file &#39;path&#39; to &#39;mode&#39;chown own path                     Change owner of file &#39;path&#39; to &#39;own&#39;rename oldpath newpath             Rename remote filerm path                            Delete remote filermdir path                         Remove remote directorysymlink oldpath newpath            Symlink remote filemkdir path                         Create remote directorypwd                                Display remote working directorydf [-hi] [path]                    Display statistics for current directory or                                   filesystem containing &#39;path&#39;</code></pre><p>对本地操作：</p><pre><code>lcd path                           Change local directory to &#39;path&#39;lls [ls-options [path]]            Display local directory listinglmkdir path                        Create local directoryln [-s] oldpath newpath            Link remote file (-s for symlink)lpwd                               Print local working directoryls [-1afhlnrSt] [path]             Display remote directory listinglumask umask                       Set local umask to &#39;umask&#39;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+          <category> cmd </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ssh 笔记</title>
+      <link href="/2019/04/29/linux-ssh-note/"/>
+      <url>/2019/04/29/linux-ssh-note/</url>
+      
+        <content type="html"><![CDATA[<p>生成 ssh key</p><pre><code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code></pre><p>将 ssh key 添加到目标主机，从而实现免密登陆</p><pre><code>ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.22</code></pre><blockquote><p>该操作相对于将 ssh 公钥复制粘贴到 192.168.0.22 机器 root 用户 ~/.ssh/authorized_keys 文件中</p></blockquote><p>远程执行 shell 命令</p><pre><code>ssh  root@192.168.0.22 &quot;echo hello&quot;</code></pre><p>登陆远程主机</p><pre><code>ssh root@192.168.0.22</code></pre><p>关闭ssh连接时提示的yes和no</p><pre><code>ssh -o StrictHostKeyChecking=no 58.221.186.137</code></pre><p>或者</p><pre><code>cat &gt; ~/.ssh/config &lt;&lt; endUserKnownHostsFile /dev/nullConnectTimeout 15StrictHostKeyChecking noend</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+          <category> cmd </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>shell 脚本简记</title>
       <link href="/2019/04/27/linux-shell-note/"/>
       <url>/2019/04/27/linux-shell-note/</url>
