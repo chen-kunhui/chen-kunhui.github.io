@@ -77,17 +77,17 @@
 
 
 
-<meta name="description" content="生成 ssh key ssh-keygen -t rsa -b 4096 -C &amp;quot;your_email@example.com&amp;quot; 将 ssh key 添加到目标主机，从而实现免密登陆 ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.22  该操作相对于将 ssh 公钥复制粘贴到 192.168.0.22 机器 root 用户 ~/">
+<meta name="description" content="小记生成 ssh key ssh-keygen -t rsa -b 4096 -C &amp;quot;your_email@example.com&amp;quot; 将 ssh key 添加到目标主机，从而实现免密登陆 ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.22  该操作相对于将 ssh 公钥复制粘贴到 192.168.0.22 机器 root 用户">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ssh 笔记">
 <meta property="og:url" content="http://yoursite.com/2019/04/29/linux-ssh-note/index.html">
 <meta property="og:site_name" content="CHEN">
-<meta property="og:description" content="生成 ssh key ssh-keygen -t rsa -b 4096 -C &amp;quot;your_email@example.com&amp;quot; 将 ssh key 添加到目标主机，从而实现免密登陆 ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.22  该操作相对于将 ssh 公钥复制粘贴到 192.168.0.22 机器 root 用户 ~/">
+<meta property="og:description" content="小记生成 ssh key ssh-keygen -t rsa -b 4096 -C &amp;quot;your_email@example.com&amp;quot; 将 ssh key 添加到目标主机，从而实现免密登陆 ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.22  该操作相对于将 ssh 公钥复制粘贴到 192.168.0.22 机器 root 用户">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-29T15:37:43.691Z">
+<meta property="og:updated_time" content="2019-08-01T15:01:24.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ssh 笔记">
-<meta name="twitter:description" content="生成 ssh key ssh-keygen -t rsa -b 4096 -C &amp;quot;your_email@example.com&amp;quot; 将 ssh key 添加到目标主机，从而实现免密登陆 ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.22  该操作相对于将 ssh 公钥复制粘贴到 192.168.0.22 机器 root 用户 ~/">
+<meta name="twitter:description" content="小记生成 ssh key ssh-keygen -t rsa -b 4096 -C &amp;quot;your_email@example.com&amp;quot; 将 ssh key 添加到目标主机，从而实现免密登陆 ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.22  该操作相对于将 ssh 公钥复制粘贴到 192.168.0.22 机器 root 用户">
 
 
 
@@ -323,8 +323,8 @@
                 <i class="fa fa-calendar-check-o"></i>
               </span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-29T23:37:43+08:00">
-                2019-04-29
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-01T23:01:24+08:00">
+                2019-08-01
               </time>
             
           </span>
@@ -388,7 +388,7 @@
       
 
       
-        <p>生成 ssh key</p>
+        <h1 id="小记"><a href="#小记" class="headerlink" title="小记"></a>小记</h1><p>生成 ssh key</p>
 <pre><code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;
 </code></pre><p>将 ssh key 添加到目标主机，从而实现免密登陆</p>
 <pre><code>ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.22
@@ -407,7 +407,51 @@ UserKnownHostsFile /dev/null
 ConnectTimeout 15
 StrictHostKeyChecking no
 end
-</code></pre>
+</code></pre><h1 id="sshd-配置文件-sshd-config"><a href="#sshd-配置文件-sshd-config" class="headerlink" title="sshd 配置文件 sshd_config"></a>sshd 配置文件 sshd_config</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ClientAliveInterval</td>
+<td>int</td>
+<td>指定服务器端向客户端请求消息的时间间隔</td>
+</tr>
+<tr>
+<td>ClientAliveCountMax</td>
+<td>int</td>
+<td>服务器发出多少次请求后客户端没有响应则自动断开</td>
+</tr>
+<tr>
+<td>PermitRootLogin</td>
+<td>yes/no</td>
+<td>是否允许root用户远程登录</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="查看登陆历史"><a href="#查看登陆历史" class="headerlink" title="查看登陆历史"></a>查看登陆历史</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>last</td>
+<td>查看近期的历史</td>
+</tr>
+</tbody>
+</table>
+</div>
+
       
     </div>
     
@@ -495,8 +539,17 @@ end
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -511,7 +564,7 @@ end
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -533,7 +586,7 @@ end
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -556,6 +609,22 @@ end
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#小记"><span class="nav-number">1.</span> <span class="nav-text">小记</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sshd-配置文件-sshd-config"><span class="nav-number">2.</span> <span class="nav-text">sshd 配置文件 sshd_config</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看登陆历史"><span class="nav-number">3.</span> <span class="nav-text">查看登陆历史</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
