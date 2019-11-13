@@ -4,6 +4,83 @@
   
     
     <entry>
+      <title>docker-build-local-docker-hub</title>
+      <link href="/2019/11/13/docker-build-local-docker-hub/"/>
+      <url>/2019/11/13/docker-build-local-docker-hub/</url>
+      
+        <content type="html"><![CDATA[<h1 id="搭建本地的-docker-hub"><a href="#搭建本地的-docker-hub" class="headerlink" title="搭建本地的 docker hub"></a>搭建本地的 docker hub</h1><h2 id="1-拉取-registry-镜像"><a href="#1-拉取-registry-镜像" class="headerlink" title="1.拉取 registry 镜像"></a>1.拉取 registry 镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker pull registry</span></span><br></pre></td></tr></table></figure><h2 id="2-启动容器"><a href="#2-启动容器" class="headerlink" title="2.启动容器"></a>2.启动容器</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -d -p 5000:5000 --restart=always --name registry registry</span></span><br></pre></td></tr></table></figure><blockquote><p>—restart=always 可以理解为每次重启docker时都重启容器</p></blockquote><p>默认情况下，仓库会被创建在容器的 /var/lib/registry 目录下。你可以通过 -v 参数来将镜像文件存放在本地的指定路径， 例如</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -d \</span><br><span class="line">    -p 5000:5000 \</span><br><span class="line">    -v /opt/data/registry:/var/lib/registry \</span><br><span class="line">    registry</span><br></pre></td></tr></table></figure><h2 id="3-本地创建一个镜像"><a href="#3-本地创建一个镜像" class="headerlink" title="3.本地创建一个镜像"></a>3.本地创建一个镜像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ cat &gt; Dockerfile &lt;&lt;EOF</span><br><span class="line">FROM ubuntu</span><br><span class="line">CMD echo &quot;hello .....&quot;</span><br><span class="line">EOF</span><br><span class="line">$ docker build ./ -t 127.0.0.1:5000/hello:1.0.1</span><br></pre></td></tr></table></figure><h2 id="4-将镜像推到本地的-docker-hub"><a href="#4-将镜像推到本地的-docker-hub" class="headerlink" title="4.将镜像推到本地的 docker hub"></a>4.将镜像推到本地的 docker hub</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker push 127.0.0.1:5000/hello:1.0.1</span><br></pre></td></tr></table></figure><h2 id="5-查看本地的-docker-hub-上有那些仓库"><a href="#5-查看本地的-docker-hub-上有那些仓库" class="headerlink" title="5.查看本地的 docker hub 上有那些仓库"></a>5.查看本地的 docker hub 上有那些仓库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl 127.0.0.1:5000/v2/_catalog</span><br><span class="line">&#123;&quot;repositories&quot;:[&quot;hello&quot;]&#125;</span><br></pre></td></tr></table></figure><h2 id="6-将本地制作的镜像删除，从搭建的-docker-hub-上重新拉取"><a href="#6-将本地制作的镜像删除，从搭建的-docker-hub-上重新拉取" class="headerlink" title="6.将本地制作的镜像删除，从搭建的 docker hub 上重新拉取"></a>6.将本地制作的镜像删除，从搭建的 docker hub 上重新拉取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker rmi 127.0.0.1:5000/hello:1.0.1</span><br><span class="line">$ docker pull 127.0.0.1:5000/hello:1.0.1</span><br></pre></td></tr></table></figure><h2 id="7-测试新拉下来的镜像"><a href="#7-测试新拉下来的镜像" class="headerlink" title="7.测试新拉下来的镜像"></a>7.测试新拉下来的镜像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker run 127.0.0.1:5000/hello:1.0.1</span><br><span class="line">hello .....</span><br></pre></td></tr></table></figure><blockquote><p><a href="https://docs.docker.com/registry/spec/api/" target="_blank" rel="noopener">Registry API</a></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>docker-install</title>
+      <link href="/2019/11/13/docker-install/"/>
+      <url>/2019/11/13/docker-install/</url>
+      
+        <content type="html"><![CDATA[<h1 id="docker-安装"><a href="#docker-安装" class="headerlink" title="docker 安装"></a>docker <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-from-a-package" target="_blank" rel="noopener">安装</a></h1><h2 id="1-下载安装包"><a href="#1-下载安装包" class="headerlink" title="1. 下载安装包"></a>1. <a href="https://download.docker.com/linux/ubuntu/dists/" target="_blank" rel="noopener">下载</a>安装包</h2><blockquote><p>请根据系统版本下载对于的 deb 包，可以通过 <code>sudo lsb_release -a</code> 查看系统版本</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> wget https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/docker-ce_18.03.1~ce~3-0~ubuntu_amd64.deb</span></span><br></pre></td></tr></table></figure><h2 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo dpkg -i docker-ce_18.03.1~ce~3-0~ubuntu_amd64.deb</span></span><br></pre></td></tr></table></figure><h2 id="3-运行-hello-world-示例"><a href="#3-运行-hello-world-示例" class="headerlink" title="3. 运行 hello-world 示例"></a>3. 运行 hello-world 示例</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo docker run hello-world</span></span><br></pre></td></tr></table></figure><h2 id="4-将普通用户添加到-docker-组，避免每次都需要使用-sodu-命令"><a href="#4-将普通用户添加到-docker-组，避免每次都需要使用-sodu-命令" class="headerlink" title="4. 将普通用户添加到 docker 组，避免每次都需要使用 sodu 命令"></a>4. 将普通用户添加到 docker 组，避免每次都需要使用 sodu 命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker your_username</span><br><span class="line">newgrp docker</span><br></pre></td></tr></table></figure><h2 id="5-修改-docker-hub-仓库地址"><a href="#5-修改-docker-hub-仓库地址" class="headerlink" title="5. 修改 docker hub 仓库地址"></a>5. 修改 docker hub 仓库地址</h2><p>有时默认的 docker hub 地址下载镜像时会很慢，可以更改为国内的镜像</p><h3 id="1-在-etc-docker-daemon-json-加入以下内容"><a href="#1-在-etc-docker-daemon-json-加入以下内容" class="headerlink" title="1. 在 /etc/docker/daemon.json 加入以下内容"></a>1. 在 <code>/etc/docker/daemon.json</code> 加入以下内容</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">   <span class="attr">"registry-mirrors"</span>: [<span class="string">"https://registry.docker-cn.com"</span>]</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="2-重启-docker"><a href="#2-重启-docker" class="headerlink" title="2. 重启 docker"></a>2. 重启 docker</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service docker restart</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>linux-common-operation</title>
+      <link href="/2019/11/13/linux-common-operation/"/>
+      <url>/2019/11/13/linux-common-operation/</url>
+      
+        <content type="html"><![CDATA[<h1 id="添加新用户"><a href="#添加新用户" class="headerlink" title="添加新用户"></a>添加新用户</h1><p>useradd 和 adduser 的区别<br>| comamd | description |<br>| —- | —- |<br>| useradd | useradd是一个linux命令，仅添加用户，不会在 /home 下创建目录 |<br>| adduser | adduser是一个perl 脚本，它会添加用户和用户组，并在 /home 目录创建目录 |</p><p>example:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">_$ adduser xxx</span></span><br><span class="line">  or</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">_$ useradd xxx</span></span><br></pre></td></tr></table></figure></p><h1 id="给普通用户添加-sudo-权限"><a href="#给普通用户添加-sudo-权限" class="headerlink" title="给普通用户添加 sudo 权限"></a>给普通用户添加 sudo 权限</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &apos;chenkh    ALL=(ALL:ALL) ALL&apos; &gt;&gt; /etc/sudoers</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> cmd </tag>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>grpc-go-demo</title>
       <link href="/2019/11/10/grpc-go-demo/"/>
       <url>/2019/11/10/grpc-go-demo/</url>
@@ -423,9 +500,9 @@
       
         <tags>
             
-            <tag> shell </tag>
-            
             <tag> linux </tag>
+            
+            <tag> shell </tag>
             
         </tags>
       
