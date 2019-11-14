@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="docker,k8s,linux,">
 
 
 
@@ -77,13 +77,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="CHEN">
-<meta property="og:url" content="http://yoursite.com/categories/os/index.html">
+<meta name="description" content="kubectl 安装 原文：https://www.kubernetes.org.cn/installkubectl  kubectl 是 Kubernetes 命令行工具,可以在Kubernetes上部署和管理应用程序，可以检查集群资源，创建，删除和更新组件 以下是安装kubectl的几种方法 第二种：直接下载 kubectl 二进制文件1.下载可执行文件这里以 v1.16.3 版本为例，最新的">
+<meta name="keywords" content="docker,k8s,linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker-kubectl-install">
+<meta property="og:url" content="http://yoursite.com/2019/11/14/docker-kubectl-install/index.html">
 <meta property="og:site_name" content="CHEN">
+<meta property="og:description" content="kubectl 安装 原文：https://www.kubernetes.org.cn/installkubectl  kubectl 是 Kubernetes 命令行工具,可以在Kubernetes上部署和管理应用程序，可以检查集群资源，创建，删除和更新组件 以下是安装kubectl的几种方法 第二种：直接下载 kubectl 二进制文件1.下载可执行文件这里以 v1.16.3 版本为例，最新的">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-14T14:12:17.135Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CHEN">
+<meta name="twitter:title" content="docker-kubectl-install">
+<meta name="twitter:description" content="kubectl 安装 原文：https://www.kubernetes.org.cn/installkubectl  kubectl 是 Kubernetes 命令行工具,可以在Kubernetes上部署和管理应用程序，可以检查集群资源，创建，删除和更新组件 以下是安装kubectl的几种方法 第二种：直接下载 kubectl 二进制文件1.下载可执行文件这里以 v1.16.3 版本为例，最新的">
 
 
 
@@ -113,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/os/">
+  <link rel="canonical" href="http://yoursite.com/2019/11/14/docker-kubectl-install/">
 
 
 
 
 
-  <title>分类: os | CHEN</title>
+  <title>docker-kubectl-install | CHEN</title>
   
 
 
@@ -138,7 +143,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -264,53 +269,191 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>os<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/14/docker-kubectl-install/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Kunhui">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHEN">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/08/23/os-ip/" itemprop="url">
-              
-                <span itemprop="name">ip 知识</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">docker-kubectl-install</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-08-23T07:24:22+08:00" content="2018-08-23">
-          08-23
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-14T21:30:20+08:00">
+                2019-11-14
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-11-14T22:12:17+08:00">
+                2019-11-14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="kubectl-安装"><a href="#kubectl-安装" class="headerlink" title="kubectl 安装"></a>kubectl 安装</h1><blockquote>
+<p>原文：<a href="https://www.kubernetes.org.cn/installkubectl" target="_blank" rel="noopener">https://www.kubernetes.org.cn/installkubectl</a></p>
+</blockquote>
+<p>kubectl 是 Kubernetes 命令行工具,可以在Kubernetes上部署和管理应用程序，可以检查集群资源，创建，删除和更新组件</p>
+<p>以下是安装kubectl的几种方法</p>
+<h2 id="第二种：直接下载-kubectl-二进制文件"><a href="#第二种：直接下载-kubectl-二进制文件" class="headerlink" title="第二种：直接下载 kubectl 二进制文件"></a>第二种：直接下载 kubectl 二进制文件</h2><h3 id="1-下载可执行文件"><a href="#1-下载可执行文件" class="headerlink" title="1.下载可执行文件"></a>1.下载可执行文件</h3><p>这里以 v1.16.3 版本为例，最新的稳定版本号可访问<a href="https://storage.googleapis.com/kubernetes-release/release/stable.txt" target="_blank" rel="noopener">这里</a>获取</p>
+<h4 id="MacOS-版本"><a href="#MacOS-版本" class="headerlink" title="MacOS 版本"></a>MacOS 版本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.3/bin/darwin/amd64/kubectl</span><br></pre></td></tr></table></figure>
+<h4 id="Linux-版本"><a href="#Linux-版本" class="headerlink" title="Linux 版本"></a>Linux 版本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.3/bin/darwin/amd64/kubectl</span><br></pre></td></tr></table></figure>
+<h4 id="window-版本"><a href="#window-版本" class="headerlink" title="window 版本"></a>window 版本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.3/bin/windows/amd64/kubectl.exe</span><br></pre></td></tr></table></figure>
+<h3 id="2-将可执行文件添加可执行权限，然后添加到-PATH-中，或放置到-usr-local-bin-这样的位置"><a href="#2-将可执行文件添加可执行权限，然后添加到-PATH-中，或放置到-usr-local-bin-这样的位置" class="headerlink" title="2. 将可执行文件添加可执行权限，然后添加到 PATH 中，或放置到 /usr/local/bin 这样的位置"></a>2. 将可执行文件添加可执行权限，然后添加到 PATH 中，或放置到 /usr/local/bin 这样的位置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod a+x kubectl</span><br><span class="line">mv kubectl /usr/local/bin</span><br><span class="line">kubectl version</span><br></pre></td></tr></table></figure>
+<h2 id="第一种：通过包管理工具安装"><a href="#第一种：通过包管理工具安装" class="headerlink" title="第一种：通过包管理工具安装"></a>第一种：通过包管理工具安装</h2><h3 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h3><p>如果您在Ubuntu或其他支持快照包管理器的Linux发行版之一，您可以使用以下安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo snap install kubectl --classic</span><br></pre></td></tr></table></figure></p>
+<h3 id="MacOS"><a href="#MacOS" class="headerlink" title="MacOS"></a>MacOS</h3><h4 id="通过-Docker-Desktop-安装"><a href="#通过-Docker-Desktop-安装" class="headerlink" title="通过 Docker Desktop 安装"></a>通过 Docker Desktop 安装</h4><p>打开 Docker Desktop &gt; 选择 preferences &gt; Kubernetes &gt; 勾选 Enable Kubernetes</p>
+<h4 id="第二种命令行方式"><a href="#第二种命令行方式" class="headerlink" title="第二种命令行方式"></a>第二种命令行方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install kubectl</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+            <a href="/tags/k8s/" rel="tag"># k8s</a>
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/13/docker-build-local-docker-hub/" rel="next" title="docker-build-local-docker-hub">
+                <i class="fa fa-chevron-left"></i> docker-build-local-docker-hub
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -318,6 +461,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -338,8 +485,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -399,6 +555,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#kubectl-安装"><span class="nav-number">1.</span> <span class="nav-text">kubectl 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第二种：直接下载-kubectl-二进制文件"><span class="nav-number">1.1.</span> <span class="nav-text">第二种：直接下载 kubectl 二进制文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-下载可执行文件"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.下载可执行文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MacOS-版本"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">MacOS 版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux-版本"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Linux 版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#window-版本"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">window 版本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-将可执行文件添加可执行权限，然后添加到-PATH-中，或放置到-usr-local-bin-这样的位置"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 将可执行文件添加可执行权限，然后添加到 PATH 中，或放置到 /usr/local/bin 这样的位置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一种：通过包管理工具安装"><span class="nav-number">1.2.</span> <span class="nav-text">第一种：通过包管理工具安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ubuntu"><span class="nav-number">1.2.1.</span> <span class="nav-text">ubuntu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MacOS"><span class="nav-number">1.2.2.</span> <span class="nav-text">MacOS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过-Docker-Desktop-安装"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">通过 Docker Desktop 安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二种命令行方式"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">第二种命令行方式</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -541,6 +713,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -915,26 +1091,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
